@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "globals": {
+    "require": true
+  },
+  "rules": {
+    "object-curly-newline": 0,
+    "no-continue": 0,
+    "no-plusplus": 0,
+    "no-bitwise": 0,
+    "no-restricted-globals": 0,
+    "function-paren-newline": 0,
+    "camelcase": 0,
+    "import/prefer-default-export": 0,
+    "func-names": 0
+  }
+}

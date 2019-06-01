@@ -1,0 +1,43 @@
+{
+  "name": "node-express-bolierplate",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Joshua Navarro <joshua.navarro35@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production pm2 start src/index.js --name WEIR-API",
+    "start:dev": "NODE_ENV=development DB_DEBUG_MODE=true nodemon --watch src src/index.js",
+    "start:staging": "NODE_ENV=staging pm2 start src/index.js --name WEIR-API",
+    "start:test": "NODE_ENV=test nodemon --watch test --exec 'mocha --recursive -R spec'",
+    "db:migrate:make": "knex migrate:make",
+    "db:migrate:latest": "knex migrate:latest",
+    "db:migrate:rollback": "knex migrate:rollback",
+    "db:seed:make": "knex seed:make",
+    "db:seed:run": "knex seed:run",
+    "db:init": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "knex": "^0.16.3",
+    "knexnest": "^1.0.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.23.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1 || ^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.25.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "nodemon": "^1.18.9"
+  }
+}
