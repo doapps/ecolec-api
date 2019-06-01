@@ -25,6 +25,10 @@ function publicacion(table) {
   table.boolean('estado');
   table.double('latitud_recolector');
   table.double('longitud_recolector');
+  table.boolean('papel').defaultTo(false);
+  table.boolean('vidrio').defaultTo(false);
+  table.boolean('plastico').defaultTo(false);
+  table.boolean('metal').defaultTo(false);
   table.string('foto_basura');
   table.integer('recolector_id');
   table.integer('ciudadano_id').unsigned().notNullable();
