@@ -49,7 +49,10 @@ async function aceptarRecojo(req, res) {
         longitud_recolector: longitude,
         estado: false,
       });
-    return res.json(result);
+    if (result) {
+      return res.json({ message: 'El recojo se te ha asignado, dirígete al punto indicado' });
+    }
+    return res.status(400).json(result);
   } catch (error) {
     const errorMessage = handleError(error);
     return res.status(500).json(errorMessage);

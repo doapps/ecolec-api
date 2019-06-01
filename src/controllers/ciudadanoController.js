@@ -1,6 +1,32 @@
 const _ = require('lodash');
+const axios = require('axios');
+const config = require('../config/config');
 const { handleError } = require('../utils/helpers/expressHelper');
 
+const { fcm: { serverKey } } = config;
+
+function sendNotificationByTopic(topic) {
+  const configs = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `key=${serverKey}`,
+    },
+  };
+
+  axios.post('https://fcm.googleapis.com/fcm/send', {
+    to: `/topics/${topic}`,
+    notification: {
+      title: 'title',
+      body: 'body',
+    },
+  }, configs)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 async function login(req, res) {
   const { db } = req.app;
@@ -38,7 +64,12 @@ async function crearPublicacion(req, res) {
       papel: categorias.papel,
     });
 
-    return res.json(result);
+    sendNotificationByTopic('ecolec');
+
+    if (result) {
+      return res.json({ message: 'Se realizó la publicación, en instantes un recolector será asignado' });
+    }
+    return res.status(400).json(result);
   } catch (error) {
     const errorMessage = handleError(error);
     return res.status(500).json(errorMessage);
