@@ -29,6 +29,9 @@ const config = {
     password: process.env.DB_PASSWORD || '',
     debugMode: process.env.DB_DEBUG_MODE || false,
   },
+  fcm: {
+    serverKey: process.env.FCM_SERVER_KEY,
+  },
 };
 
 module.exports = config;
