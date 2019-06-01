@@ -14,17 +14,17 @@ function recolector(table) {
   table.string('password', 200).notNullable();
   table.string('dni', 10).notNullable();
   table.string('foto', 250);
-  table.float('latitud');
-  table.float('longitud');
+  table.double('latitud');
+  table.double('longitud');
 }
 
 function publicacion(table) {
   table.increments('id').primary();
-  table.float('latitud_ciudadano');
-  table.float('longitud_ciudadano');
+  table.double('latitud_ciudadano');
+  table.double('longitud_ciudadano');
   table.boolean('estado');
-  table.float('latitud_recolector');
-  table.float('longitud_recolector');
+  table.double('latitud_recolector');
+  table.double('longitud_recolector');
   table.string('foto_basura');
   table.integer('recolector_id');
   table.integer('ciudadano_id').unsigned().notNullable();
