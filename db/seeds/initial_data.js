@@ -182,6 +182,69 @@ const categorias = [
   },
 ];
 
+const publicaciones = [
+  {
+    id: 1,
+    latitud_ciudadano: -12.133635,
+    longitud_ciudadano: -77.015622,
+    estado: 1,
+    latitud_recolector: null,
+    longitud_recolector: null,
+    papel: 0,
+    vidrio: 0,
+    plastico: 1,
+    metal: 0,
+    foto_basura: 'https://www.ecoticias.com/userfiles/extra/HCIM_petreciclado_plasticos.jpg',
+    recolector_id: null,
+    ciudadano_id: 2,
+  },
+  {
+    id: 2,
+    latitud_ciudadano: -12.133974,
+    longitud_ciudadano: -77.011745,
+    estado: 1,
+    latitud_recolector: null,
+    longitud_recolector: null,
+    papel: 1,
+    vidrio: 0,
+    plastico: 0,
+    metal: 0,
+    foto_basura: 'http://diarioabc.mx/noticias/wp-content/uploads/2015/06/RECICLAJE-PAPEL.jpg',
+    recolector_id: null,
+    ciudadano_id: 4,
+  },
+  {
+    id: 3,
+    latitud_ciudadano: -12.134470,
+    longitud_ciudadano: -77.009677,
+    estado: 1,
+    latitud_recolector: null,
+    longitud_recolector: null,
+    papel: 0,
+    vidrio: 1,
+    plastico: 0,
+    metal: 0,
+    foto_basura: 'https://blog.oxfamintermon.org/wp-content/uploads/2016/09/reciclar-vidrio-1-726x484.jpg',
+    recolector_id: null,
+    ciudadano_id: 6,
+  },
+  {
+    id: 4,
+    latitud_ciudadano: -12.135223,
+    longitud_ciudadano: -77.007349,
+    estado: 1,
+    latitud_recolector: null,
+    longitud_recolector: null,
+    papel: 0,
+    vidrio: 0,
+    plastico: 0,
+    metal: 1,
+    foto_basura: 'https://blog.seccionamarilla.com.mx/wp-content/uploads/2017/09/reciclaje-de-metales-2-770x578.jpg',
+    recolector_id: null,
+    ciudadano_id: 7,
+  },
+];
+
 
 exports.seed = async (knex) => {
   await knex.raw('SET @@SESSION.foreign_key_checks = 0;');
@@ -194,4 +257,5 @@ exports.seed = async (knex) => {
   await knex('ciudadano').insert(ciudadanos);
   await knex('recolector').insert(recolector);
   await knex('categoria').insert(categorias);
+  await knex('publicacion').insert(publicaciones);
 };
