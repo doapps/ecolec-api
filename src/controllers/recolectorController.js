@@ -28,7 +28,7 @@ async function listarPuntosRecojo(req, res) {
   const { db } = req.app;
 
   try {
-    const publicaciones = (await db('publicacion')) || [];
+    const publicaciones = (await db('publicacion').where('estado', true)) || [];
     return res.json(publicaciones);
   } catch (error) {
     const errorMessage = handleError(error);
@@ -38,10 +38,18 @@ async function listarPuntosRecojo(req, res) {
 
 async function aceptarRecojo(req, res) {
   const { db } = req.app;
+  const { id, publicacion_id, latitude, longitude } = req.body;
 
   try {
-    const recolectores = await db('recolector');
-    return res.json(recolectores);
+    const result = await db('publicacion')
+      .where({ id: publicacion_id })
+      .update({
+        recolector_id: id,
+        latitud_recolector: latitude,
+        longitud_recolector: longitude,
+        estado: false,
+      });
+    return res.json(result);
   } catch (error) {
     const errorMessage = handleError(error);
     return res.status(500).json(errorMessage);

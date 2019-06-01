@@ -22,7 +22,7 @@ function publicacion(table) {
   table.increments('id').primary();
   table.double('latitud_ciudadano');
   table.double('longitud_ciudadano');
-  table.boolean('estado');
+  table.boolean('estado').defaultTo(true);
   table.double('latitud_recolector');
   table.double('longitud_recolector');
   table.boolean('papel').defaultTo(false);
