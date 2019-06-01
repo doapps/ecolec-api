@@ -1,6 +1,4 @@
-const request = require('request');
-const https = require('https');
-const axios = require('axios')
+const axios = require('axios');
 const config = require('../config/config');
 const { handleError } = require('../utils/helpers/expressHelper');
 
