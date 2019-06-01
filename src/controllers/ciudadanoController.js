@@ -27,7 +27,6 @@ async function login(req, res) {
 async function crearPublicacion(req, res) {
   const { db } = req.app;
   const { id, latitude, longitude, categorias, photo } = req.body;
-  // const { recolector_id, latitude, longitude, categorias } = req.body;
 
   try {
     const result = await db('publicacion').insert({
@@ -46,7 +45,37 @@ async function crearPublicacion(req, res) {
   }
 }
 
+async function listarRecolectores(req, res) {
+  const { db } = req.app;
+
+  try {
+    const recolectores = await db('recolector');
+    return res.json(recolectores);
+  } catch (error) {
+    const errorMessage = handleError(error);
+    return res.status(500).json(errorMessage);
+  }
+}
+
+async function detalleRecolector(req, res) {
+  const { db } = req.app;
+  const { id } = req.params;
+
+  try {
+    const recolector = (await db
+      .first('*')
+      .from('recolector')
+      .where('id', id)) || {};
+    return res.json(recolector);
+  } catch (error) {
+    const errorMessage = handleError(error);
+    return res.status(500).json(errorMessage);
+  }
+}
+
 module.exports = {
   login,
   crearPublicacion,
+  listarRecolectores,
+  detalleRecolector,
 };
