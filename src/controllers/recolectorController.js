@@ -56,11 +56,7 @@ async function listarPuntosRecojo(req, res) {
 
   try {
     const publicaciones = (await db('publicacion')
-      .orWhere('estado', true)
-      .orWhere('papel', papel)
-      .orWhere('vidrio', vidrio)
-      .orWhere('plastico', plastico)
-      .orWhere('metal', metal)
+      .where('estado', true)
     ) || [];
     return res.json(publicaciones);
   } catch (error) {
