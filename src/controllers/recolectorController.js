@@ -16,8 +16,8 @@ function sendNotification(token) {
   axios.post('https://fcm.googleapis.com/fcm/send', {
     to: token,
     notification: {
-      title: 'title',
-      body: 'body',
+      title: 'Ecolec',
+      body: 'Un recolector ha aceptado tu solicitud',
     },
   }, configs)
     .then((res) => {

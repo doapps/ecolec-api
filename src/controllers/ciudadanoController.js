@@ -16,8 +16,8 @@ function sendNotificationByTopic(topic) {
   axios.post('https://fcm.googleapis.com/fcm/send', {
     to: `/topics/${topic}`,
     notification: {
-      title: 'title',
-      body: 'body',
+      title: 'Ecolec',
+      body: 'Hay una nueva solicitud de reciclaje',
     },
   }, configs)
     .then((res) => {
