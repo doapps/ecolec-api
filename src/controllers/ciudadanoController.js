@@ -30,7 +30,7 @@ function sendNotificationByTopic(topic) {
 
 async function login(req, res) {
   const { db } = req.app;
-  const { email, password } = req.body;
+  const { email, password, token } = req.body;
   try {
     const ciudadano = (await db
       .first('id', 'nombres', 'apellidos', 'email', 'password')
@@ -43,6 +43,12 @@ async function login(req, res) {
     if (password !== ciudadano.password) {
       return res.status(401).json({ message: 'Contraseña incorrecta' });
     }
+
+    await db('ciudadano')
+      .where({ email })
+      .update({
+        token,
+      });
     return res.json(ciudadano);
   } catch (error) {
     const errorMessage = handleError(error);

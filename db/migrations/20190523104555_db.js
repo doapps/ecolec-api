@@ -4,6 +4,7 @@ function ciudadano(table) {
   table.string('apellidos', 150).notNullable();
   table.string('email', 150).unique();
   table.string('password', 200).notNullable();
+  table.string('token', 250);
 }
 
 function recolector(table) {
