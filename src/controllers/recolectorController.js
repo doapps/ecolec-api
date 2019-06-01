@@ -24,6 +24,32 @@ async function login(req, res) {
   }
 }
 
+async function listarPuntosRecojo(req, res) {
+  const { db } = req.app;
+
+  try {
+    const publicaciones = (await db('publicacion')) || [];
+    return res.json(publicaciones);
+  } catch (error) {
+    const errorMessage = handleError(error);
+    return res.status(500).json(errorMessage);
+  }
+}
+
+async function aceptarRecojo(req, res) {
+  const { db } = req.app;
+
+  try {
+    const recolectores = await db('recolector');
+    return res.json(recolectores);
+  } catch (error) {
+    const errorMessage = handleError(error);
+    return res.status(500).json(errorMessage);
+  }
+}
+
 module.exports = {
   login,
+  listarPuntosRecojo,
+  aceptarRecojo,
 };
