@@ -87,8 +87,8 @@ async function aceptarRecojo(req, res) {
       .innerJoin('ciudadano AS c', 'p.ciudadano_id', 'c.id')
       .where('p.id', publicacion_id);
 
-    console.log('--->');
-    console.log(ciudadano);
+    const ciudadanoToken = ciudadano[0].token;
+    sendNotification(ciudadanoToken);
 
     if (result) {
       return res.json({ message: 'El recojo se te ha asignado, dirígete al punto indicado' });
