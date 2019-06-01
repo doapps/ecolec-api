@@ -29,6 +29,25 @@ const recolector = [
   },
 ];
 
+const categoria = [
+  {
+    id: 1,
+    name: 'Papel/Cartón/Tetrapack',
+  },
+  {
+    id: 2,
+    name: 'Vidrio',
+  },
+  {
+    id: 3,
+    name: 'Plástico',
+  },
+  {
+    id: 4,
+    name: 'Metal',
+  },
+];
+
 
 exports.seed = async (knex) => {
   await knex.raw('SET @@SESSION.foreign_key_checks = 0;');
@@ -41,4 +60,5 @@ exports.seed = async (knex) => {
   await knex.raw('SET @@SESSION.foreign_key_checks = 1;');
   await knex('ciudadano').insert(ciudadanos);
   await knex('recolector').insert(recolector);
+  // await knex('cate')
 };

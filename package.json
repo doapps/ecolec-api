@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production pm2 start src/index.js --name WEIR-API",
+    "start": "NODE_ENV=production pm2 start src/index.js --name ECOLEC-API",
     "start:dev": "NODE_ENV=development DB_DEBUG_MODE=true nodemon --watch src src/index.js",
-    "start:staging": "NODE_ENV=staging pm2 start src/index.js --name WEIR-API",
+    "start:staging": "NODE_ENV=staging pm2 start src/index.js --name ECOLEC-API",
     "start:test": "NODE_ENV=test nodemon --watch test --exec 'mocha --recursive -R spec'",
     "db:migrate:make": "knex migrate:make",
     "db:migrate:latest": "knex migrate:latest",
