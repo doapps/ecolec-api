@@ -1,6 +1,32 @@
 const _ = require('lodash');
+const axios = require('axios');
+const config = require('../config/config');
 const { handleError } = require('../utils/helpers/expressHelper');
 
+const { fcm: { serverKey } } = config;
+
+function sendNotification(token) {
+  const configs = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `key=${serverKey}`,
+    },
+  };
+
+  axios.post('https://fcm.googleapis.com/fcm/send', {
+    to: token,
+    notification: {
+      title: 'title',
+      body: 'body',
+    },
+  }, configs)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 async function login(req, res) {
   const { db } = req.app;

@@ -182,7 +182,6 @@ exports.seed = async (knex) => {
   await knex('recolector').del();
   await knex('categoria').del();
   await knex('publicacion').del();
-  await knex('publicacion_categoria').del();
 
   await knex.raw('SET @@SESSION.foreign_key_checks = 1;');
   await knex('ciudadano').insert(ciudadanos);
