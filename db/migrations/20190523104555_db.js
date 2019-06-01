@@ -37,23 +37,12 @@ function categoria(table) {
   table.string('name', 50).notNullable();
 }
 
-function publicacion_categoria(table) {
-  table.increments('id').primary();
-  table.integer('publicacion_id').unsigned().notNullable();
-  table.foreign('publicacion_id').references('id').inTable('publicacion');
-
-  table.integer('categoria_id').unsigned().notNullable();
-  table.foreign('categoria_id').references('id').inTable('categoria');
-  table.timestamps(true, true);
-}
-
 exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable('ciudadano', ciudadano),
     knex.schema.createTable('recolector', recolector),
     knex.schema.createTable('categoria', categoria),
     knex.schema.createTable('publicacion', publicacion),
-    knex.schema.createTable('publicacion_categoria', publicacion_categoria),
   ]);
 };
 
@@ -64,7 +53,6 @@ exports.down = async (knex) => {
     knex.schema.dropTableIfExists('recolector'),
     knex.schema.dropTableIfExists('categoria'),
     knex.schema.dropTableIfExists('publicacion'),
-    knex.schema.dropTableIfExists('publicacion_categoria'),
     knex.raw('SET foreign_key_checks = 1;'),
   ]);
 };
