@@ -82,6 +82,14 @@ async function aceptarRecojo(req, res) {
         longitud_recolector: longitude,
         estado: false,
       });
+
+    const ciudadano = await db.select('c.token').from('publicacion AS p')
+      .innerJoin('ciudadano AS c', 'p.ciudadano_id', 'c.id')
+      .where('p.id', publicacion_id);
+
+    console.log('--->');
+    console.log(ciudadano);
+
     if (result) {
       return res.json({ message: 'El recojo se te ha asignado, dirígete al punto indicado' });
     }

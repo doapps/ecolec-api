@@ -41,6 +41,13 @@ const ciudadanos = [
     email: 'davidrios@gmail.com',
     password: '123456',
   },
+  {
+    id: 7,
+    nombres: 'Roberto',
+    apellidos: 'Martinez',
+    email: 'uno',
+    password: 'uno',
+  },
 ];
 
 const recolector = [
