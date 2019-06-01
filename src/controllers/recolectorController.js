@@ -26,9 +26,16 @@ async function login(req, res) {
 
 async function listarPuntosRecojo(req, res) {
   const { db } = req.app;
+  const { papel, vidrio, plastico, metal } = req.body;
 
   try {
-    const publicaciones = (await db('publicacion').where('estado', true)) || [];
+    const publicaciones = (await db('publicacion')
+      .where('estado', true)
+      .where('papel', papel)
+      .where('vidrio', vidrio)
+      .where('plastico', plastico)
+      .where('metal', metal)
+    ) || [];
     return res.json(publicaciones);
   } catch (error) {
     const errorMessage = handleError(error);

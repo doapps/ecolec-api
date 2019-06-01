@@ -62,6 +62,9 @@ async function crearPublicacion(req, res) {
       foto_basura: photo,
       ciudadano_id: id,
       papel: categorias.papel,
+      vidrio: categorias.vidrio,
+      plastico: categorias.plastico,
+      metal: categorias.metal,
     });
 
     sendNotificationByTopic('ecolec');
