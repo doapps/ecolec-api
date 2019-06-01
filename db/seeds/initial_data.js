@@ -29,7 +29,7 @@ const recolector = [
   },
 ];
 
-const categoria = [
+const categorias = [
   {
     id: 1,
     name: 'Papel/Cartón/Tetrapack',
@@ -60,5 +60,5 @@ exports.seed = async (knex) => {
   await knex.raw('SET @@SESSION.foreign_key_checks = 1;');
   await knex('ciudadano').insert(ciudadanos);
   await knex('recolector').insert(recolector);
-  // await knex('cate')
+  await knex('categoria').insert(categorias);
 };
